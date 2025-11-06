@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.codenotes.LoginController">
+    <center>
+        <HBox alignment="CENTER" style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%);">
+            <VBox alignment="CENTER" spacing="40" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 25, 0, 0, 0);" HBox.hgrow="ALWAYS" maxWidth="400" maxHeight="650">
+                <padding>
+                    <Insets top="50" right="40" bottom="50" left="40" />
+                </padding>
+
+                <!-- Header Section -->
+                <VBox alignment="CENTER" spacing="10">
+                    <Text fx:id="appTitle" text="Code Notes" style="-fx-fill: #2d3748; -fx-font-size: 32; -fx-font-weight: bold;" />
+                    <Text fx:id="appSubtitle" text="Your intelligent code snippet manager" style="-fx-fill: #718096; -fx-font-size: 14;" />
+                </VBox>
+
+                <!-- Navigation Tabs -->
+                <HBox alignment="CENTER" spacing="30">
+                    <Button fx:id="loginTab" text="Login" style="-fx-background-color: transparent; -fx-text-fill: #667eea; -fx-font-weight: bold; -fx-font-size: 14; -fx-underline: true; -fx-cursor: hand;" />
+                    <Button fx:id="signUpTab" text="Sign Up" style="-fx-background-color: transparent; -fx-text-fill: #a0aec0; -fx-font-size: 14; -fx-cursor: hand;" />
+                    <Button fx:id="resetTab" text="Reset" style="-fx-background-color: transparent; -fx-text-fill: #a0aec0; -fx-font-size: 14; -fx-cursor: hand;" />
+                </HBox>
+
+                <!-- Login Form -->
+                <VBox fx:id="loginForm" spacing="25" alignment="CENTER_LEFT" prefWidth="320">
+                    <!-- Email Field -->
+                    <VBox spacing="8" prefWidth="320">
+                        <Label text="Email" style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 14;" />
+                        <TextField fx:id="emailField" promptText="your@email.com" prefWidth="320" prefHeight="45" style="-fx-background-color: #f7fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 14; -fx-padding: 0 15;" />
+                    </VBox>
+
+                    <!-- Password Field -->
+                    <VBox spacing="8" prefWidth="320">
+                        <Label text="Password" style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 14;" />
+                        <PasswordField fx:id="passwordField" promptText="Enter your password" prefWidth="320" prefHeight="45" style="-fx-background-color: #f7fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 14; -fx-padding: 0 15;" />
+                    </VBox>
+
+                    <!-- Login Button -->
+                    <Button fx:id="loginButton" text="Login" prefWidth="320" prefHeight="50" style="-fx-background-color: linear-gradient(to right, #667eea, #764ba2); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16; -fx-background-radius: 8; -fx-cursor: hand;" />
+
+                    <!-- Links -->
+                    <HBox alignment="CENTER" spacing="15" prefWidth="320">
+                        <Hyperlink fx:id="signUpLink" text="Sign Up" style="-fx-text-fill: #667eea; -fx-font-size: 14; -fx-border-color: transparent; -fx-underline: false;" />
+                        <Text text="•" style="-fx-fill: #cbd5e0;" />
+                        <Hyperlink fx:id="resetLink" text="Reset Password" style="-fx-text-fill: #667eea; -fx-font-size: 14; -fx-border-color: transparent; -fx-underline: false;" />
+                    </HBox>
+                </VBox>
+
+                <!-- Signup Form -->
+                <VBox fx:id="signupForm" spacing="25" alignment="CENTER_LEFT" prefWidth="320" visible="false" managed="false">
+                    <!-- Full Name Field -->
+                    <VBox spacing="8" prefWidth="320">
+                        <Label text="Full Name" style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 14;" />
+                        <TextField fx:id="fullNameField" promptText="Nathaneal Amolato Caay" prefWidth="320" prefHeight="45" style="-fx-background-color: #f7fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 14; -fx-padding: 0 15;" />
+                    </VBox>
+
+                    <!-- Email Field -->
+                    <VBox spacing="8" prefWidth="320">
+                        <Label text="Email" style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 14;" />
+                        <TextField fx:id="signupEmailField" promptText="your@email.com" prefWidth="320" prefHeight="45" style="-fx-background-color: #f7fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 14; -fx-padding: 0 15;" />
+                    </VBox>
+
+                    <!-- Password Field -->
+                    <VBox spacing="8" prefWidth="320">
+                        <Label text="Password" style="-fx-text-fill: #4a5568; -fx-font-weight: bold; -fx-font-size: 14;" />
+                        <PasswordField fx:id="signupPasswordField" promptText="Create a password" prefWidth="320" prefHeight="45" style="-fx-background-color: #f7fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 14; -fx-padding: 0 15;" />
+                        <Label text="Minimum 6 characters" style="-fx-text-fill: #a0aec0; -fx-font-size: 12; -fx-padding: 5 0 0 0;" />
+                    </VBox>
+
+                    <!-- Create Account Button -->
+                    <Button fx:id="createAccountButton" text="Create Account" prefWidth="320" prefHeight="50" style="-fx-background-color: linear-gradient(to right, #667eea, #764ba2); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16; -fx-background-radius: 8; -fx-cursor: hand;" />
+
+                    <!-- Links -->
+                    <HBox alignment="CENTER" spacing="15" prefWidth="320">
+                        <Hyperlink fx:id="signupLoginLink" text="Sign In" style="-fx-text-fill: #667eea; -fx-font-size: 14; -fx-border-color: transparent; -fx-underline: false;" />
+                        <Text text="•" style="-fx-fill: #cbd5e0;" />
+                        <Hyperlink fx:id="signupResetLink" text="Reset Password" style="-fx-text-fill: #667eea; -fx-font-size: 14; -fx-border-color: transparent; -fx-underline: false;" />
+                    </HBox>
+                </VBox>
+
+                <!-- Footer -->
+                <VBox alignment="CENTER" spacing="5">
+                    <Text text="Code Notes • Organize and annotate your code snippets" style="-fx-fill: #a0aec0; -fx-font-size: 12;" />
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
