@@ -68,24 +68,46 @@ public class LoginController {
     private Hyperlink signupResetLink;
 
     @FXML
+    private VBox resetForm;
+
+    @FXML
+    private TextField resetEmailField;
+
+    @FXML
+    private Button resetPasswordButton;
+
+    @FXML
+    private Hyperlink resetLoginLink;
+
+    @FXML
+    private Hyperlink resetSignupLink;
+
+    @FXML
     private void initialize() {
-        // Start with login form visible and signup form hidden
+        // Start with login form visible and other forms hidden
         showLoginForm();
 
         // Set up event handlers for tabs
         loginTab.setOnAction(e -> showLoginForm());
         signUpTab.setOnAction(e -> showSignupForm());
-        resetTab.setOnAction(e -> handleResetPassword());
+        resetTab.setOnAction(e -> showResetForm());
 
         // Set up event handlers for form actions
         loginButton.setOnAction(e -> handleLogin());
         createAccountButton.setOnAction(e -> handleSignup());
-        resetLink.setOnAction(e -> handleResetPassword());
-        signUpLink.setOnAction(e -> showSignupForm());
+        resetPasswordButton.setOnAction(e -> handleResetPassword());
 
-        // Set up event handlers for signup form links
+        // Set up event handlers for links in login form
+        signUpLink.setOnAction(e -> showSignupForm());
+        resetLink.setOnAction(e -> showResetForm());
+
+        // Set up event handlers for links in signup form
         signupLoginLink.setOnAction(e -> showLoginForm());
-        signupResetLink.setOnAction(e -> handleResetPassword());
+        signupResetLink.setOnAction(e -> showResetForm());
+
+        // Set up event handlers for links in reset form
+        resetLoginLink.setOnAction(e -> showLoginForm());
+        resetSignupLink.setOnAction(e -> showSignupForm());
 
         // Enter key support
         setupEnterKeySupport();
@@ -97,6 +119,8 @@ public class LoginController {
         loginForm.setManaged(true);
         signupForm.setVisible(false);
         signupForm.setManaged(false);
+        resetForm.setVisible(false);
+        resetForm.setManaged(false);
 
         // Update tab styles
         loginTab.setStyle("-fx-background-color: transparent; -fx-text-fill: #667eea; -fx-font-weight: bold; -fx-font-size: 14; -fx-underline: true; -fx-cursor: hand;");
@@ -113,6 +137,8 @@ public class LoginController {
         loginForm.setManaged(false);
         signupForm.setVisible(true);
         signupForm.setManaged(true);
+        resetForm.setVisible(false);
+        resetForm.setManaged(false);
 
         // Update tab styles
         loginTab.setStyle("-fx-background-color: transparent; -fx-text-fill: #a0aec0; -fx-font-size: 14; -fx-cursor: hand;");
@@ -123,8 +149,22 @@ public class LoginController {
         appSubtitle.setText("Your intelligent code snippet manager");
     }
 
-    private void handleResetPassword() {
-        showAlert("Reset Password", "Password reset feature coming soon!");
+    @FXML
+    private void showResetForm() {
+        loginForm.setVisible(false);
+        loginForm.setManaged(false);
+        signupForm.setVisible(false);
+        signupForm.setManaged(false);
+        resetForm.setVisible(true);
+        resetForm.setManaged(true);
+
+        // Update tab styles
+        loginTab.setStyle("-fx-background-color: transparent; -fx-text-fill: #a0aec0; -fx-font-size: 14; -fx-cursor: hand;");
+        signUpTab.setStyle("-fx-background-color: transparent; -fx-text-fill: #a0aec0; -fx-font-size: 14; -fx-cursor: hand;");
+        resetTab.setStyle("-fx-background-color: transparent; -fx-text-fill: #667eea; -fx-font-weight: bold; -fx-font-size: 14; -fx-underline: true; -fx-cursor: hand;");
+
+        appTitle.setText("Code Notes");
+        appSubtitle.setText("Reset your password");
     }
 
     private void setupEnterKeySupport() {
@@ -134,6 +174,8 @@ public class LoginController {
         fullNameField.setOnAction(e -> signupEmailField.requestFocus());
         signupEmailField.setOnAction(e -> signupPasswordField.requestFocus());
         signupPasswordField.setOnAction(e -> handleSignup());
+
+        resetEmailField.setOnAction(e -> handleResetPassword());
     }
 
     private void handleLogin() {
@@ -187,6 +229,22 @@ public class LoginController {
         fullNameField.clear();
         signupEmailField.clear();
         signupPasswordField.clear();
+    }
+
+    private void handleResetPassword() {
+        String email = resetEmailField.getText();
+
+        if (email.isEmpty()) {
+            showAlert("Error", "Please enter your email address.");
+            return;
+        }
+
+        // For demo purposes - simulate password reset
+        showAlert("Reset Email Sent", "Password reset instructions have been sent to: " + email);
+        showLoginForm();
+
+        // Clear reset field
+        resetEmailField.clear();
     }
 
     private void showAlert(String title, String message) {
